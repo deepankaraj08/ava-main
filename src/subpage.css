@@ -136,8 +136,8 @@
 @media (max-width: 560px) {
   .card-grid,
   .photo-grid { grid-template-columns: 1fr; }
-  .event-card-media { height: 205px; }
-  .photo-tile { height: 230px; }
+  .event-card-media { height: auto; aspect-ratio: 16 / 10.5; }
+  .photo-tile { height: auto; aspect-ratio: 16 / 10.5; min-height: 200px; }
   .page-head { padding: 30px 0 34px; }
   .page-sub { font-size: 15px; margin-top: 26px; }
 }

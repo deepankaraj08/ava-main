@@ -612,10 +612,11 @@ body {
   /* photo drops BELOW the copy instead of overlapping it.
      it stays position:relative so .hero-image / .year-card keep anchoring to it */
   .hero-visual { position: relative; left: auto; right: auto; bottom: auto;
-                 width: 100%; height: 380px; margin-top: 58px; }
-  .hero-visual::before { top: -26px; right: -16px; }
+                 width: 100%; height: auto; aspect-ratio: 16 / 10.5; margin-top: 48px; }
+  .hero-visual::before { top: -20px; right: -14px; }
+  .hero-image { left: 0; }
   .year-card { width: 165px; height: 148px; padding: 20px; bottom: -32px; }
-  .scroll-hint { position: static; margin-top: 66px; }
+  .scroll-hint { position: static; margin-top: 40px; }
 }
 
 @media (max-width: 850px) {
@@ -636,22 +637,25 @@ body {
   .values-head > p, .events-head > p { margin-top: 25px; }
   .value-grid { grid-template-columns: 1fr; }
   .event-layout { grid-template-columns: 1fr; }
-  .event-feature { min-height: 440px; }
+  .event-feature { min-height: 0; height: auto; aspect-ratio: 16 / 10.5; }
   .stats { gap: 55px; }
 }
 @media (max-width: 560px) {
   .section { width: 88%; }
-  .hero { padding: 10px 6% 60px; min-height: 0; }
-  .hero-visual { height: 300px; margin-top: 46px; }
-  .hero-image { left: 28%; }
+  .hero { padding: 10px 6% 50px; min-height: 0; }
+  .hero-visual { height: auto; aspect-ratio: 16 / 10.5; min-height: 190px; margin-top: 36px; }
+  .hero-visual::before { top: -14px; right: -10px; border-radius: 20px; }
+  .hero-image { left: 0; border-radius: 20px; }
+  .hero-image img { object-fit: cover; object-position: center center; }
+  .image-note { right: 12px; bottom: 12px; padding: 8px 12px; font-size: 7.5px; border-radius: 10px; }
   .year-card { left: 0; bottom: -30px; width: 142px; height: 122px; padding: 18px; }
   .year-card strong { font-size: 34px; }
   .photo-collage { grid-template-columns: 1fr; }
   .photo-two { grid-column: auto; }
-  .photo-one, .photo-two, .photo-three { height: 290px; }
+  .photo-one, .photo-two, .photo-three { height: auto; aspect-ratio: 16 / 10.5; min-height: 190px; }
   .stat-grid { grid-template-columns: 1fr; }
-  .team-photo { height: 360px; }
-  .event-overlay h3 { font-size: 26px; }
+  .team-photo { height: auto; aspect-ratio: 16 / 10.5; min-height: 190px; }
+  .event-overlay h3 { font-size: 24px; }
   .site footer { flex-direction: column; gap: 9px; }
 }
 /* ABOUT BUTTONS */

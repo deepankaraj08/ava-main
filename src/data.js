@@ -35,6 +35,29 @@ export const initiatives = [
   }
 ];
 
+// New gallery photos from assets-source/gallery/ (copy them to public/images-opt/ and public/images-thumb/)
+export const galleryPhotos = [
+  "/images-opt/second.png",
+  "/images-opt/third.png",
+  "/images-opt/fourth.png",
+  "/images-opt/five.png",
+  "/images-opt/six.png",
+  "/images-opt/seven.jpeg",
+  "/images-opt/eight.jpeg",
+  "/images-opt/nine1.png",
+  "/images-opt/ten.jpeg",
+  "/images-opt/12.jpeg",
+  "/images-opt/pic1.png",
+  "/images-opt/pic3.png",
+  "/images-opt/pic4.png",
+  "/images-opt/pic5.png",
+  "/images-opt/pic6.png",
+  "/images-opt/aurora.png",
+  "/images-opt/black.png",
+  "/images-opt/dmc.jpeg",
+  "/images-opt/vdc.png"
+];
+
 export const teamImages = [
   "/images-opt/team-1.webp",
   "/images-opt/team-2.webp",
