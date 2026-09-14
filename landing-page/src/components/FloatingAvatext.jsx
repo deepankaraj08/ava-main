@@ -12,7 +12,7 @@ const FloatingAvatext = () => {
           gap-[0.14em] sm:gap-[0.18em]
           translate-y-0 md:translate-y-[-200px]
           font-body
-          text-[12.5vw]
+          text-[9vw] md:text-[5.5vw]
           font-black
           uppercase
           leading-none

@@ -184,7 +184,7 @@ html, body {
   }
 
   h1:has(.avalanche-letter) {
-    font-size: clamp(2.6rem, 12.5vw, 6rem) !important;
+    font-size: clamp(2.2rem, 5.5vw, 4.2rem) !important;
     letter-spacing: 0.03em !important;
     gap: 0.08em !important;
   }
@@ -200,7 +200,7 @@ html, body {
   }
 
   h1:has(.avalanche-letter) {
-    font-size: clamp(2.4rem, 12.5vw, 4.5rem) !important;
+    font-size: clamp(2rem, 9.5vw, 3.6rem) !important;
     letter-spacing: 0.03em !important;
   }
 }
@@ -215,7 +215,7 @@ html, body {
   }
 
   h1:has(.avalanche-letter) {
-    font-size: clamp(2.1rem, 12vw, 3.8rem) !important;
+    font-size: clamp(1.8rem, 9vw, 3.2rem) !important;
   }
 }
 
