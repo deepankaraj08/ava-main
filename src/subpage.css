@@ -1,0 +1,349 @@
+/* subpage.css — shared layout for the Events and Gallery pages.
+   Colours all come from the variables already defined in about.css. */
+
+.page-head {
+  padding: 70px 0 55px;
+}
+
+.page-head h1 {
+  font-family: "Space Grotesk", sans-serif;
+  /* longest word is "GALLERY." — min() keeps it inside the column at any width */
+  font-size: min(12vw, 150px);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  margin: 18px 0 0;
+  color: var(--ink);
+}
+
+.page-head h1 i {
+  font-style: normal;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--ink);
+}
+
+.page-sub {
+  max-width: 460px;
+  margin: 34px 0 0;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* ================================
+   EVENTS
+   ================================ */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 34px;
+  padding-bottom: 110px;
+}
+
+.event-card {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 45px rgba(54, 93, 110, 0.18);
+}
+
+.event-card-media {
+  height: 235px;
+  overflow: hidden;
+}
+
+.event-card-media img {
+  transition: transform 0.6s ease;
+}
+
+.event-card:hover .event-card-media img {
+  transform: scale(1.05);
+}
+
+.event-card-body {
+  padding: 26px 24px 30px;
+}
+
+.event-card-body span {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 1.6px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.event-card-body h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 27px;
+  margin: 12px 0 10px;
+  color: var(--ink);
+}
+
+.event-card-body p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ================================
+   GALLERY
+   ================================ */
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  padding-bottom: 110px;
+}
+
+.photo-tile {
+  margin: 0;
+  height: 260px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--blue);
+}
+
+.photo-tile img {
+  transition: transform 0.6s ease;
+}
+
+.photo-tile:hover img {
+  transform: scale(1.06);
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 900px) {
+  .card-grid { grid-template-columns: repeat(2, 1fr); gap: 26px; }
+  .photo-grid { grid-template-columns: repeat(2, 1fr); }
+  .photo-tile { height: 215px; }
+  .page-head { padding: 45px 0 40px; }
+}
+
+@media (max-width: 560px) {
+  .card-grid,
+  .photo-grid { grid-template-columns: 1fr; }
+  .event-card-media { height: 205px; }
+  .photo-tile { height: 230px; }
+  .page-head { padding: 30px 0 34px; }
+  .page-sub { font-size: 15px; margin-top: 26px; }
+}
+
+/* ================================
+   TEAM
+   ================================ */
+
+.year-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 38px;
+}
+
+.year-chip {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--muted);
+  border-radius: 50px;
+  padding: 9px 18px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.year-chip:hover {
+  transform: translateY(-2px);
+  background: #fff;
+}
+
+.year-chip.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding-bottom: 110px;
+}
+
+.member-card {
+  min-width: 0;             /* let the grid cell shrink instead of overflowing */
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 20px 18px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.member-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(54, 93, 110, 0.16);
+}
+
+.member-photo {
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.member-initials {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.member-card h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 17px;
+  line-height: 1.25;
+  margin: 16px 0 0;
+  color: var(--ink);
+}
+
+.member-year {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  color: var(--muted);
+  margin-top: 7px;
+}
+
+.member-links {
+  display: flex;
+  flex-wrap: wrap;          /* two pills will not fit side by side in a narrow card */
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+  min-height: 14px;
+}
+
+.member-links a {
+  /* was a 16px-tall underline - too small to tap. Now a proper pill. */
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+
+  border: 1px solid var(--line);
+  border-radius: 50px;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: var(--muted);
+  transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.member-links a:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+  background: rgba(143, 201, 232, 0.18);
+}
+
+@media (max-width: 900px) {
+  .team-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .member-photo { width: 100px; height: 100px; }
+}
+
+@media (max-width: 560px) {
+  .team-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .member-photo { width: 88px; height: 88px; }
+  .member-card { padding: 16px 12px 18px; }
+  .member-card h3 { font-size: 14px; }
+}
+
+/* ================================
+   ENTRANCE ANIMATION
+   ================================ */
+
+/* page heading arrives on load */
+.page-head .eyebrow,
+.page-head h1,
+.page-sub,
+.year-filter {
+  opacity: 0;
+  animation: subpageRise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.page-head h1    { animation-delay: 0.08s; }
+.page-sub        { animation-delay: 0.16s; }
+.year-filter     { animation-delay: 0.22s; }
+
+@keyframes subpageRise {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* cards arrive as they scroll into view (see useReveal.js) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+[data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* a short stagger across each row, capped so nothing waits long */
+[data-reveal].is-in:nth-child(2n)  { transition-delay: 0.05s; }
+[data-reveal].is-in:nth-child(3n)  { transition-delay: 0.10s; }
+[data-reveal].is-in:nth-child(4n)  { transition-delay: 0.15s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .page-head .eyebrow,
+  .page-head h1,
+  .page-sub,
+  .year-filter,
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ---- very narrow phones (Galaxy Fold and similar) ---- */
+@media (max-width: 340px) {
+  .team-grid,
+  .card-grid,
+  .photo-grid { grid-template-columns: 1fr; }
+  .member-card { padding: 18px 14px 20px; }
+  .member-links { flex-wrap: wrap; justify-content: center; }
+}
+
+/* narrow cards: tighten the pills so they still read well when stacked */
+@media (max-width: 560px) {
+  .member-links a { padding: 0 10px; min-height: 32px; }
+}

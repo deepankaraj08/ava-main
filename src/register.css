@@ -1,0 +1,240 @@
+/* register.css — ADVENTO registration form. Same palette as the other pages. */
+
+.register-head {
+  padding-bottom: 34px;
+}
+
+/* the form is its own centred column, not stuck to the left of a 1320px grid */
+.register-wrap {
+  width: min(680px, 91%);
+  margin: 0 auto;
+  padding-bottom: clamp(70px, 10vw, 120px);
+}
+
+.register-card {
+  padding: clamp(20px, 4vw, 40px);
+
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.93);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 50px rgba(54, 93, 110, 0.13);
+}
+
+/* ---------- fields ---------- */
+
+.register-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(14px, 2.4vw, 20px);
+}
+
+.register-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+/* name and email get the whole row */
+.register-field.is-wide {
+  grid-column: 1 / -1;
+}
+
+.register-field > span {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+}
+
+.register-field input,
+.register-field select {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px;
+
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: #fff;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;          /* 16px stops iOS zooming in on focus */
+  color: var(--ink);
+
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* USN is a code, so give it code-ish spacing */
+.register-field input[placeholder="4SI26CS047"] {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.register-field input::placeholder {
+  color: #9aa6ad;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.register-field input:focus,
+.register-field select:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 4px rgba(143, 201, 232, 0.3);
+}
+
+.register-field input[aria-invalid="true"] {
+  border-color: #c0392b;
+  background: #fff7f6;
+}
+
+.register-field em {
+  font-style: normal;
+  font-size: 12px;
+  line-height: 1.35;
+  color: #c0392b;
+}
+
+/* ---------- actions ---------- */
+
+.register-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: clamp(20px, 3vw, 28px);
+}
+
+.register-btn {
+  align-self: flex-start;
+  padding: 15px 38px;
+
+  border: 0;
+  border-radius: 50px;
+  background: var(--ink);
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  color: #fff;
+  text-decoration: none;
+
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.register-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(17, 19, 22, 0.28);
+}
+
+.register-btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.register-error,
+.register-note {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #c0392b;
+}
+
+.register-note {
+  margin-bottom: 22px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(192, 57, 43, 0.08);
+}
+
+.register-note code {
+  font-size: 12px;
+}
+
+/* ---------- success ---------- */
+
+.register-done h3 {
+  margin: 0 0 12px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(26px, 5vw, 34px);
+  color: var(--ink);
+}
+
+.register-done p {
+  margin: 0 0 24px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.register-done .register-btn {
+  display: inline-block;
+}
+
+/* ---------- phones ---------- */
+
+@media (max-width: 620px) {
+  .register-grid { grid-template-columns: 1fr; }
+  .register-btn { align-self: stretch; text-align: center; }
+}
+
+/* ---------- success details ---------- */
+
+.register-see {
+  margin: 0 0 24px;
+  font-size: clamp(15px, 2.4vw, 17px);
+  color: var(--muted);
+}
+
+.register-details {
+  margin: 0 0 28px;
+  padding: 20px 22px;
+
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: rgba(143, 201, 232, 0.16);
+
+  display: grid;
+  gap: 16px;
+}
+
+.register-details > div {
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.register-details dt {
+  margin: 0;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  color: var(--muted);
+}
+
+.register-details dd {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(15px, 2.6vw, 18px);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+@media (max-width: 420px) {
+  .register-details > div { grid-template-columns: 1fr; gap: 3px; }
+}
+
+/* the card arrives with the heading */
+.register-card {
+  opacity: 0;
+  animation: subpageRise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.18s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .register-card { opacity: 1; animation: none; }
+}

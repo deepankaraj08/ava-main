@@ -1,0 +1,204 @@
+/* countdown.css — ADVENTO countdown card on the landing hero. */
+
+.countdown {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(70px, 12vh, 130px);
+  transform: translateX(-50%);
+  z-index: 30;
+
+  width: min(620px, 88vw);
+  padding: clamp(16px, 3.2vw, 28px) clamp(14px, 3vw, 34px);
+
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+
+  background: rgba(12, 22, 30, 0.55);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: 0 24px 60px rgba(6, 16, 24, 0.38);
+
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.countdown-kicker {
+  margin: 0;
+  font-size: clamp(8px, 1.5vw, 10px);
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.countdown-title {
+  margin: 8px 0 clamp(12px, 2.2vw, 20px);
+  font-size: clamp(11px, 2.2vw, 15px);
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: #8fc9e8;
+}
+
+.countdown-grid {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(4px, 1.4vw, 14px);
+}
+
+.countdown-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: clamp(52px, 13vw, 86px);
+}
+
+.countdown-cell strong {
+  font-size: clamp(26px, 7vw, 50px);
+  font-weight: 800;
+  line-height: 1;
+  color: #ffffff;
+
+  /* digits must not nudge the layout every second */
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+.countdown-cell span {
+  margin-top: 8px;
+  font-size: clamp(7px, 1.4vw, 10px);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.countdown-sep {
+  font-size: clamp(20px, 5vw, 38px);
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(143, 201, 232, 0.45);
+}
+
+.countdown-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: clamp(14px, 2.6vw, 22px);
+}
+
+.countdown-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+
+  border-radius: 50px;
+  border: 1px solid rgba(143, 201, 232, 0.5);
+  background: #8fc9e8;
+
+  font-size: clamp(11px, 1.8vw, 13px);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #0c161e;
+  text-decoration: none;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.countdown-cta:hover {
+  transform: translateY(-3px);
+  background: #ffffff;
+  box-shadow: 0 14px 30px rgba(6, 16, 24, 0.4);
+}
+
+.countdown-whatsapp {
+  background: #25D366;
+  border-color: rgba(37, 211, 102, 0.6);
+  color: #ffffff;
+}
+
+.countdown-whatsapp:hover {
+  background: #1eb857;
+  color: #ffffff;
+  box-shadow: 0 14px 30px rgba(37, 211, 102, 0.4);
+}
+
+/* short screens: keep it clear of the footer strip */
+@media (max-height: 700px) {
+  .countdown { bottom: 58px; }
+}
+
+@media (max-width: 420px) {
+  .countdown-sep { display: none; }
+  .countdown-grid { gap: 2px; }
+}
+
+/* Phones and tablets: the title is pinned to the top by responsive.css, so a
+   bottom-anchored card leaves a large empty band between the two. Centre the
+   card in the hero instead. */
+@media (max-width: 900px) {
+  .countdown {
+    top: 50%;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* very short viewports: centring would crowd the title, so sit low again */
+@media (max-width: 900px) and (max-height: 620px) {
+  .countdown {
+    top: auto;
+    bottom: 80px;
+    transform: translateX(-50%);
+  }
+}
+
+/* Landscape phones: ~360px of height has to hold the title, the card and the
+   footer strip, so the card goes compact rather than overlapping the title. */
+@media (max-height: 520px) {
+  .countdown {
+    top: auto;
+    bottom: 70px;
+    transform: translateX(-50%);
+    width: min(520px, 92vw);
+    padding: 10px 18px 12px;
+    border-radius: 18px;
+  }
+  .countdown-kicker { display: none; }
+  .countdown-title { margin: 0 0 8px; font-size: 10px; letter-spacing: 0.22em; }
+  .countdown-cell { min-width: 46px; }
+  .countdown-cell strong { font-size: 24px; }
+  .countdown-cell span { margin-top: 3px; font-size: 7px; }
+  .countdown-sep { font-size: 18px; }
+  .countdown-cta { margin-top: 10px; padding: 9px 24px; font-size: 10px; }
+}
+
+/* Fade only - the card's transform is doing the centring, so animating
+   transform here would fight it. */
+.countdown {
+  animation: countdownIn 0.8s ease 0.25s both;
+}
+
+@keyframes countdownIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .countdown { animation: none; opacity: 1; }
+}
+
+/* ---- hero footer strip ----
+   The Instagram / Mail chips were ~20px tall, well under a finger-sized
+   target. Give them a real hit area on touch screens without changing the
+   look much. */
+@media (pointer: coarse), (max-width: 900px) {
+  section .bg-gray-400\/70 {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding-inline: 0.7rem;
+  }
+}
