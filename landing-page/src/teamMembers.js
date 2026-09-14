@@ -2,7 +2,7 @@
 // Years run 4 (senior) down to 1. A null image renders initials instead.
 
 export const teamMembers = [
-  // ── Year 4 ───────────────────────────────────────────────────────────────
+  // ── V13 (Year 4) ───────────────────────────────────────────────────────────
   { year: 4, name: 'Advaita Amrit', image: '/team/advaita.webp', instagram: 'https://www.instagram.com/advaita_amrrit', linkedin: 'https://www.linkedin.com/in/advaita-amrit' },
   { year: 4, name: 'Harsh Raj', image: '/team/harsh.webp', instagram: 'https://www.instagram.com/harshxraze', linkedin: 'https://www.linkedin.com/in/harsh-raj-346ba3202/' },
   { year: 4, name: 'Jhanvi', image: '/team/Jnanavi.webp', instagram: 'https://www.instagram.com/jnanaviiii', linkedin: 'https://www.linkedin.com/in/JnanaviHarish' },
@@ -15,7 +15,7 @@ export const teamMembers = [
   { year: 4, name: 'Vansh Jha', image: '/team/vansh.webp', instagram: 'https://www.instagram.com/vanshhjhaa', linkedin: 'https://www.linkedin.com/in/vansh-jha13' },
   { year: 4, name: 'Yash Jadhav', image: '/team/yash2year.webp', instagram: 'https://www.instagram.com/yash__1910/', linkedin: 'https://www.linkedin.com/in/yash-jadhav-7ba599264/' },
 
-  // ── Year 3 ───────────────────────────────────────────────────────────────
+  // ── V14 (Year 3) ───────────────────────────────────────────────────────────
   { year: 3, name: 'Babul Kumar', image: '/team/babul.webp', instagram: 'https://www.instagram.com/babulkr328', linkedin: 'https://www.linkedin.com/in/babul-kumar-a0a45a27b' },
 
   { year: 3, name: 'Abhinav Raj', image: '/team/abhinav.webp', instagram: 'https://www.instagram.com/abhinav.en', linkedin: 'https://www.linkedin.com/in/abhinav-raj-9b789731a' },
@@ -37,7 +37,7 @@ export const teamMembers = [
   { year: 3, name: 'Sayan Kumar', image: '/team/sayan.webp', instagram: 'https://www.instagram.com/_sayan38', linkedin: 'https://www.linkedin.com/in/sayan-kumar-342536331' },
   { year: 3, name: 'Soham Khade', image: '/team/soham.webp', instagram: 'https://www.instagram.com/sohamkhade0901', linkedin: 'https://www.linkedin.com/in/soham-khade-410378380' },
 
-  // ── Year 2 ────────────────────────────────────────────────────
+  // ── V15 (Year 2) ────────────────────────────────────────────────────
   { year: 2, name: 'Abhijeet Satyam', image: '/team/jeet.webp', instagram: 'https://www.instagram.com/the_jeetx', linkedin: 'https://www.linkedin.com/in/abhijeet-satyam-45b85a3b4' },
   { year: 2, name: 'Aryan Shandilya', image: '/team/aryan.webp', instagram: 'https://www.instagram.com/aryan.tf', linkedin: 'https://www.linkedin.com/in/aryan-shandilya-757266382' },
   { year: 2, name: 'Avnish Aman', image: '/team/avnish.webp', instagram: 'https://www.instagram.com/avnish__04', linkedin: 'https://www.linkedin.com/in/avnish-aman-903b39362' },

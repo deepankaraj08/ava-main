@@ -48,7 +48,7 @@ function TeamPage() {
                 className={`year-chip ${year === y ? "active" : ""}`}
                 onClick={() => setYear(y)}
               >
-                YEAR {y}
+                {y === 4 ? "V13" : y === 3 ? "V14" : y === 2 ? "V15" : `V${y}`}
               </button>
             ))}
           </div>
@@ -67,7 +67,7 @@ function TeamPage() {
               </div>
 
               <h3>{m.name}</h3>
-              <span className="member-year">YEAR {m.year}</span>
+              <span className="member-year">{m.year === 4 ? "V13" : m.year === 3 ? "V14" : m.year === 2 ? "V15" : `V${m.year}`}</span>
 
               <div className="member-links">
                 {m.instagram && (

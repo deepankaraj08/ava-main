@@ -141,7 +141,7 @@ const MemberCardContent = ({ member, onImageClick }) => (
         {member.role}
       </p>
       <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider font-semibold">
-        {member.year === 1 ? 'V15' : member.year === 2 ? 'V14' : member.year === 3 ? 'V13' : member.year === 4 ? 'V12' : `Year ${member.year}`}
+        {member.year === 4 ? 'V13' : member.year === 3 ? 'V14' : member.year === 2 ? 'V15' : member.year === 1 ? 'V16' : `V${member.year}`}
       </p>
     </div>
 
@@ -359,7 +359,7 @@ const Team = forwardRef((props, ref) => {
         <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-12">
           {filterOptions.map((year) => {
             const isActive = activeYear === year;
-            const label = year === 'All' ? 'All Members' : `Year ${year}`;
+            const label = year === 'All' ? 'All Members' : year === 4 ? 'V13' : year === 3 ? 'V14' : year === 2 ? 'V15' : `V${year}`;
             return (
               <button
                 key={year}
