@@ -6,13 +6,26 @@ import "../about.css";
 import "../subpage.css";
 
 // Auto-import all photos from the gallery source folder via Vite glob
-const SKIP = new Set(["Avalanche Logo.png", "icon.png", "logo.png", "first1.png", "ghost.png"]);
+const SKIP = new Set([
+  "Avalanche Logo.png",
+  "Avalanche Logo copy.png",
+  "Avalanche%20Logo%20copy.png",
+  "icon.png",
+  "icon copy.png",
+  "icon%20copy.png",
+  "logo.png",
+  "first1.png",
+  "ghost.png"
+]);
 const galleryModules = import.meta.glob(
   "../../assets-source/gallery/*",
   { eager: true, query: "?url", import: "default" }
 );
 const galleryPhotos = Object.entries(galleryModules)
-  .filter(([filePath]) => !SKIP.has(filePath.split("/").pop()))
+  .filter(([filePath]) => {
+    const filename = filePath.split("/").pop();
+    return !SKIP.has(filename) && !SKIP.has(decodeURIComponent(filename));
+  })
   .map(([, url]) => url);
 
 // every picture we have, newest sets first

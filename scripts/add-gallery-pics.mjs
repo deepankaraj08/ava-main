@@ -22,7 +22,15 @@ const OPT_DIR   = path.join(root, "public", "images-opt");
 const THUMB_DIR = path.join(root, "public", "images-thumb");
 
 // Files that are logos/icons, not gallery photos — skip them
-const SKIP = new Set(["Avalanche Logo.png", "icon.png", "logo.png"]);
+const SKIP = new Set([
+  "Avalanche Logo.png",
+  "Avalanche Logo copy.png",
+  "icon.png",
+  "icon copy.png",
+  "logo.png",
+  "first1.png",
+  "ghost.png"
+]);
 
 async function main() {
   const files = await readdir(SRC_DIR);

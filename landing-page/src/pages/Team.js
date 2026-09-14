@@ -194,29 +194,21 @@ const cardBase =
 const desktopCardBase =
   'team-glass-card rounded-2xl p-5 flex flex-col items-center w-full max-w-[240px]';
 
-const TeamSectionInline = ({ members, isMobile, onImageClick }) => (
+const TeamSectionInline = ({ members, onImageClick }) => (
   <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 justify-items-center">
-    {members.map((member) =>
-      isMobile ? (
-        // ── Zero JS animation on mobile ──
-        <div key={member.name} className={`${cardBase} team-card-fadein`}>
-          <MemberCardContent member={member} onImageClick={onImageClick} />
-        </div>
-      ) : (
-        // ── Desktop: framer-motion whileInView + glassmorphism + glow border ──
-        <motion.div
-          key={member.name}
-          variants={cardVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-30px' }}
-          whileHover={{ y: -6, transition: { type: 'spring', stiffness: 260, damping: 18 } }}
-          className={desktopCardBase}
-        >
-          <MemberCardContent member={member} onImageClick={onImageClick} />
-        </motion.div>
-      )
-    )}
+    {members.map((member) => (
+      <motion.div
+        key={member.name}
+        variants={cardVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-30px' }}
+        whileHover={{ y: -6, transition: { type: 'spring', stiffness: 260, damping: 18 } }}
+        className={desktopCardBase}
+      >
+        <MemberCardContent member={member} onImageClick={onImageClick} />
+      </motion.div>
+    ))}
   </div>
 );
 
@@ -384,7 +376,7 @@ const Team = forwardRef((props, ref) => {
         </div>
 
         {/* ── Team Grid ── */}
-        <TeamSectionInline members={filteredMembers} isMobile={isMobile} onImageClick={setSelectedImage} />
+        <TeamSectionInline members={filteredMembers} onImageClick={setSelectedImage} />
 
       </div>
 

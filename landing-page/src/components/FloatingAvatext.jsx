@@ -2,30 +2,21 @@ import React from "react";
 
 const FloatingAvatext = () => {
   return (
-    <div className="absolute inset-0 ">
+    <div className="absolute inset-0 z-10 pointer-events-none flex justify-center items-start pt-[8.5vh] sm:pt-[10vh] md:pt-0 md:items-center">
       <h1
         className="
-          absolute
-          inset-0
-          z-[1]
           flex
-          h-full
-          w-full
           items-center
           justify-center
-
           whitespace-nowrap
-
-          gap-[0.18em]
-          translate-y-[-200px]
-
+          gap-[0.14em] sm:gap-[0.18em]
+          translate-y-0 md:translate-y-[-200px]
           font-body
-          text-[11vw]
+          text-[12.5vw]
           font-black
           uppercase
           leading-none
-          tracking-[0.07em]
-
+          tracking-[0.05em] sm:tracking-[0.07em]
           pointer-events-none
         "
       >
