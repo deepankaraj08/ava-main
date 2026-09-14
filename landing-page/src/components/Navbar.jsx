@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import Avalogo from '../assets-opt/ava_logo.webp'
+import Avalogo from '../../../assets-source/gallery/Avalanche Logo copy.png'
 import '../navbar.css'
 
 const LINKS = [

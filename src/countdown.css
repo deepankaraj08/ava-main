@@ -38,6 +38,21 @@
   color: #8fc9e8;
 }
 
+.coming-soon-gif-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0 14px;
+}
+
+.coming-soon-gif {
+  max-width: 100%;
+  height: auto;
+  max-height: clamp(90px, 20vw, 150px);
+  object-fit: contain;
+  border-radius: 14px;
+}
+
 .countdown-grid {
   display: flex;
   align-items: flex-start;

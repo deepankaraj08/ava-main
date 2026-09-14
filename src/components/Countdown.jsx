@@ -46,16 +46,8 @@ const Countdown = () => {
         {left ? "ADVENTO COMING SOON" : "ADVENTO IS LIVE"}
       </p>
 
-      <div className="countdown-grid">
-        {cells.map(([value, label], i) => (
-          <React.Fragment key={label}>
-            {i > 0 && <span className="countdown-sep">:</span>}
-            <div className="countdown-cell">
-              <strong>{value}</strong>
-              <span>{label}</span>
-            </div>
-          </React.Fragment>
-        ))}
+      <div className="coming-soon-gif-container">
+        <img src="/Coming soon.gif" alt="Coming Soon" className="coming-soon-gif" />
       </div>
 
       <div className="countdown-actions">

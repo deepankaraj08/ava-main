@@ -119,7 +119,7 @@ function Register() {
                 <div><dt>VENUE</dt><dd>{EVENT_VENUE}</dd></div>
               </dl>
 
-              <Link to="/" className="register-btn">BACK TO HOME</Link>
+              <Link to="/" className="register-btn">BACK TO HOME ↗</Link>
             </div>
           ) : (
             <form className="register-card register-form" onSubmit={onSubmit} noValidate>

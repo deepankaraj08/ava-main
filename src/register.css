@@ -106,7 +106,9 @@
   margin-top: clamp(20px, 3vw, 28px);
 }
 
-.register-btn {
+.register-btn,
+.site main a.register-btn,
+.register-done .register-btn {
   align-self: flex-start;
   padding: 15px 38px;
 
@@ -118,16 +120,21 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 1.6px;
-  color: #fff;
+  color: #ffffff !important;
   text-decoration: none;
 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
 .register-btn:hover:not(:disabled) {
   transform: translateY(-3px);
   box-shadow: 0 14px 30px rgba(17, 19, 22, 0.28);
+  color: #ffffff !important;
 }
 
 .register-btn:disabled {
@@ -171,7 +178,7 @@
 }
 
 .register-done .register-btn {
-  display: inline-block;
+  display: inline-flex;
 }
 
 /* ---------- phones ---------- */
