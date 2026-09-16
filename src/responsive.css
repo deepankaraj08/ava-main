@@ -269,3 +269,92 @@ html, body {
     font-size: clamp(1.6rem, 7vw, 3rem) !important;
   }
 }
+
+/* ======================================================
+   SWIPE PAGE INDICATOR  (mobile only — hidden on desktop)
+   ====================================================== */
+
+/* Hidden by default on desktop */
+.swipe-indicator {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .swipe-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+
+    /* Fixed above the footer bar (footer = 38px, gap ~12px) */
+    position: fixed;
+    bottom: 58px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+
+    /* Glassmorphism pill */
+    background: rgba(10, 15, 30, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    padding: 7px 18px 8px;
+
+    /* Subtle entrance animation */
+    animation: swipe-indicator-in 0.5s ease both;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  @keyframes swipe-indicator-in {
+    from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+
+  /* Row of dots */
+  .swipe-indicator__dots {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .swipe-indicator__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: background 0.3s ease, transform 0.3s ease, width 0.3s ease;
+  }
+
+  .swipe-indicator__dot--active {
+    background: rgba(147, 197, 253, 0.95);  /* light blue glow */
+    width: 20px;
+    border-radius: 999px;
+    box-shadow: 0 0 8px rgba(147, 197, 253, 0.7);
+    animation: dot-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes dot-pulse {
+    0%, 100% { box-shadow: 0 0 6px rgba(147, 197, 253, 0.6); }
+    50%       { box-shadow: 0 0 14px rgba(147, 197, 253, 1); }
+  }
+
+  /* Page name label */
+  .swipe-indicator__label {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(200, 220, 255, 0.8);
+    margin: 0;
+    line-height: 1;
+  }
+
+  /* Swipe hint arrows that fade in briefly on first load */
+  .swipe-indicator::before,
+  .swipe-indicator::after {
+    content: '';
+    display: block;
+  }
+}
