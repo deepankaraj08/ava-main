@@ -59,7 +59,7 @@ const Mainscreen = () => {
             WHATSAPP
           </a>
           <a
-            href="https://www.linkedin.com/company/team-avalanche-official/"
+            href="https://www.linkedin.com/company/team-avalanche-sit/"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#0A66C2]/80 hover:bg-[#0A66C2] text-white rounded-2xl px-2.5 py-0.5 flex items-center gap-1.5 transition-colors text-[11px] font-semibold"
