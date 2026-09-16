@@ -195,9 +195,9 @@ function About() {
 
       <footer>
 
-        <span>
+        <Link to="/">
           AVALANCHE®
-        </span>
+        </Link>
 
         <span>
           STUDENT COMMUNITY

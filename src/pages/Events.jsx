@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar.jsx";
 import { initiatives } from "../data.js";
 import { useReveal } from "../useReveal.js";
@@ -52,7 +53,7 @@ function Events() {
       </main>
 
       <footer>
-        <span>AVALANCHE®</span>
+        <Link to="/">AVALANCHE®</Link>
         <span>STUDENT COMMUNITY</span>
         <span>© 2026</span>
       </footer>

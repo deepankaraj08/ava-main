@@ -50,4 +50,4 @@ export const teamMembers = [
   { year: 2, name: 'Suprem Timsina', image: '/team/suprem.webp', instagram: 'https://www.instagram.com/supremm___', linkedin: 'https://www.linkedin.com/in/suprem-timsina-387086392' },
 ];
 
-export const teamYears = [4, 3, 2];
+export const teamYears = ['All', 'V13', 'V14', 'V15'];

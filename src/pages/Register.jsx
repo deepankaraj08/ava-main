@@ -183,7 +183,7 @@ function Register() {
       </main>
 
       <footer>
-        <span>AVALANCHE®</span>
+        <Link to="/">AVALANCHE®</Link>
         <span>STUDENT COMMUNITY</span>
         <span>© 2026</span>
       </footer>
