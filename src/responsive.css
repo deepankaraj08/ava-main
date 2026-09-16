@@ -232,22 +232,22 @@ html, body {
 
 @media (max-width: 640px) {
   .bg-gray-400\/30 {
-    padding-left: 0.75rem !important;
-    padding-right: 0.75rem !important;
-    height: auto !important;
-    min-height: 7% !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    height: 38px !important;
+    min-height: 38px !important;
     flex-wrap: nowrap !important;
-    gap: 0.5rem !important;
+    gap: 0.35rem !important;
   }
 
   .bg-gray-400\/30 img {
-    height: 1.4rem !important;
-    width: 1.4rem !important;
+    height: 1.1rem !important;
+    width: 1.1rem !important;
   }
 
   .bg-gray-400\/70.rounded-2xl.px-3.py-1 {
-    padding: 0.25rem 0.55rem !important;
-    font-size: 0.65rem !important;
+    padding: 0.2rem 0.5rem !important;
+    font-size: 0.62rem !important;
     white-space: nowrap !important;
   }
 }

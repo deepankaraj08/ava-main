@@ -62,6 +62,18 @@ body {
 .site { overflow-x: clip; } /* clip, not hidden: hidden would break sticky */ /* never overflow-y - it clipped the whole page */
 .section { width: min(1320px, 91%); margin: 0 auto; }
 
+/* ---- shared eyebrow label ---- */
+.eyebrow h3,
+.eyebrow h4 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+}
+
 .nav {
   position: absolute;
   z-index: 20;
@@ -404,11 +416,11 @@ body {
 .intro { padding: 110px 0 90px; display: grid; grid-template-columns: 70px 1fr; gap: 40px; }
 .side-number { font-size: 11px; font-weight: 700; padding-top: 8px; }
 .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; }
-.site h2 { margin: 22px 0 0; font-size: min(8vw, 125px); }
+.site h2 { margin: 22px 0 0; font-family: "Space Grotesk", sans-serif; font-size: min(8vw, 125px); font-weight: 700; letter-spacing: -0.04em; line-height: 0.85; }
 .site h2 i { font-style: normal; color: transparent; -webkit-text-stroke: 2px var(--ink); }
 .intro-text { padding-top: 60px; max-width: 560px; }
 .intro-text p { color: var(--muted); line-height: 1.7; font-size: 16px; margin: 0 0 24px; }
-.intro-text .lead { color: var(--ink); font-size: 24px; line-height: 1.4; }
+.intro-text .lead { color: var(--ink); font-size: 22px; line-height: 1.45; font-weight: 500; }
 
 .values { padding: 100px 0 170px; }
 .values-head, .events-head {
@@ -587,18 +599,18 @@ body {
 .team-label span { color: var(--muted); font-size: 9px; letter-spacing: 1px; }
 .team-label strong { font-size: 15px; }
 
-.final {
-  min-height: 620px; background: var(--ink); color: white;
-  padding: 120px 7%; display: flex; flex-direction: column; justify-content: center;
+".final {
+  min-height: 340px; background: var(--ink); color: white;
+  padding: 60px 7%; display: flex; flex-direction: column; justify-content: center;
 }
 .final .eyebrow { color: #999; }
-.final h2 { font-size: min(12vw, 175px); margin: 35px 0 55px; }
+.final h2 { font-size: min(9vw, 110px); margin: 20px 0 30px; }
 .final h2 i { -webkit-text-stroke: 2px white; }
 .final-btn { background: var(--blue); color: var(--ink); width: fit-content; }
 
 .site footer {
   background: var(--ink); color: #777; border-top: 1px solid #292929;
-  padding: 24px 4.5%; display: flex; justify-content: space-between; font-size: 9px; letter-spacing: 1px;
+  padding: 14px 4.5%; display: flex; justify-content: space-between; font-size: 9px; letter-spacing: 1px;
 }
 
 .about-reveal { opacity: 0; transform: translateY(45px); transition: opacity .8s ease, transform .8s ease; }
@@ -656,7 +668,13 @@ body {
   .stat-grid { grid-template-columns: 1fr; }
   .team-photo { height: auto; aspect-ratio: 16 / 10.5; min-height: 190px; }
   .event-overlay h3 { font-size: 24px; }
-  .site footer { flex-direction: column; gap: 9px; }
+  .site footer { flex-direction: row; flex-wrap: wrap; gap: 8px; padding: 12px 4.5%; }
+  .site h2 { font-size: clamp(2.8rem, 12vw, 5rem); }
+  .intro-text .lead { font-size: 18px; }
+  .about-buttons { flex-direction: column; }
+  .about-button { min-width: 0; width: 100%; }
+  .final { min-height: 260px; padding: 40px 6%; }
+  .final h2 { font-size: clamp(2.2rem, 10vw, 3.8rem) !important; margin: 16px 0 24px !important; }
 }
 /* ABOUT BUTTONS */
 
@@ -916,15 +934,9 @@ section.final .final-btn {
    TEXT ANIMATIONS
    ========================================= */
 
-/* Initial state */
+/* Initial state — hero elements animate in on page load */
 .hero h1,
-.hero .hero-sub,
-.intro h2,
-.intro-text,
-.events-head h2,
-.events-head p,
-.final h2,
-.final .eyebrow {
+.hero .hero-sub {
   opacity: 0;
   transform: translateY(40px);
   animation: textReveal 1s ease forwards;
@@ -940,32 +952,9 @@ section.final .final-btn {
   animation-delay: 0.5s;
 }
 
-/* WHO WE ARE heading */
-.intro h2 {
-  animation-delay: 0.2s;
-}
-
-/* About paragraph */
-.intro-text {
+/* Hero paragraph */
+.hero .hero-sub {
   animation-delay: 0.5s;
-}
-
-/* Events heading */
-.events-head h2 {
-  animation-delay: 0.2s;
-}
-
-.events-head p {
-  animation-delay: 0.5s;
-}
-
-/* Final READY TO CREATE */
-.final .eyebrow {
-  animation-delay: 0.1s;
-}
-
-.final h2 {
-  animation-delay: 0.4s;
 }
 
 

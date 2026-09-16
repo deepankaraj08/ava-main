@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar.jsx";
 import "../about.css";
 
@@ -109,36 +110,28 @@ function About() {
             <div className="intro-text">
 
               <p className="lead">
-                <h3>
                   Avalanche is a student community that believes college life
                   should be experienced, not simply attended.
-                </h3>
               </p>
 
               <p>
-                <h4>
                   We bring together people with different interests, talents and
                   ideas to build events and initiatives that make campus life
                   more exciting, creative and connected.
-                </h4>
               </p>
 
               <p>
-                <h4>
                   From cultural celebrations and large-scale events to
                   community-driven initiatives, every project begins with a simple
                   idea and a team willing to bring it to life. We believe the best
                   experiences are created when people collaborate, experiment and
                   take ownership.
-                </h4>
               </p>
 
               <p>
-                <h4>
                   Avalanche is not just about organizing events — it is about
                   building memories, discovering talent, meeting new people and
                   creating something students can truly call their own.
-                </h4>
               </p>
 
               <div className="about-buttons">
@@ -188,12 +181,12 @@ function About() {
             <i>CREATE?</i>
           </h2>
 
-          <a
-            href="#top"
+          <Link
+            to="/register"
             className="final-btn"
           >
-            BACK TO TOP ↗
-          </a>
+            REGISTER NOW ↗
+          </Link>
 
         </section>
 
