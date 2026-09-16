@@ -2,7 +2,7 @@
    Only screens above 1280px keep your original untouched desktop design. */
 
 html, body {
-  overflow-x: clip !important;
+  overflow-x: hidden !important; /* 'clip' breaks position:fixed in Chromium — use 'hidden' instead */
 }
 
 /* ======================================================
@@ -286,11 +286,10 @@ html, body {
     align-items: center;
     gap: 6px;
 
-    /* Fixed above the footer bar (footer = 38px, gap ~12px) */
+    /* Pinned to the bottom of the viewport, safe on all pages */
     position: fixed;
-    bottom: 58px;
+    bottom: 20px;
     left: 50%;
-    transform: translateX(-50%);
     z-index: 9999;
 
     /* Glassmorphism pill */
@@ -301,15 +300,24 @@ html, body {
     border-radius: 999px;
     padding: 7px 18px 8px;
 
-    /* Subtle entrance animation */
-    animation: swipe-indicator-in 0.5s ease both;
     pointer-events: none;
     user-select: none;
+
+    /* Hidden by default — slides down + fades out */
+    opacity: 0;
+    transform: translateX(-50%) translateY(16px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
   }
 
-  @keyframes swipe-indicator-in {
-    from { opacity: 0; transform: translateX(-50%) translateY(10px); }
-    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  /* Show when scrolled to bottom — slides up + fades in */
+  .swipe-indicator[data-visible="true"] {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* On the landing page the social bar is 38px tall — lift the indicator above it */
+  body[data-page="home"] .swipe-indicator {
+    bottom: 62px; /* 38px bar + 24px gap */
   }
 
   /* Row of dots */
