@@ -287,15 +287,15 @@ html, body {
 }
 
 @media (max-width: 768px) {
-  /* Apply to the top-level page wrapper when navigating forward */
-  body[data-nav-dir="next"] #root > .landing,
-  body[data-nav-dir="next"] #root > .site {
+  /* Apply to the page wrapper when navigating forward (swipe UP → next page) */
+  body[data-nav-dir="next"] .landing,
+  body[data-nav-dir="next"] .site {
     animation: slide-in-from-bottom 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
-  /* Apply to the top-level page wrapper when navigating backward */
-  body[data-nav-dir="prev"] #root > .landing,
-  body[data-nav-dir="prev"] #root > .site {
+  /* Apply to the page wrapper when navigating backward (swipe DOWN → prev page) */
+  body[data-nav-dir="prev"] .landing,
+  body[data-nav-dir="prev"] .site {
     animation: slide-in-from-top 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 }

@@ -68,9 +68,10 @@ export function useSwipeNavigation() {
       const dx  = t.clientX - sx
       const dy  = t.clientY - sy
 
-      // Must be clearly vertical and long enough
-      if (Math.abs(dy) < 40) return
-      if (Math.abs(dx) > Math.abs(dy)) return   // horizontal dominant — ignore
+      // Must be CLEARLY vertical: dy ≥ 50px AND dy must be at least 2× dx
+      // This blocks left-right and diagonal swipes from triggering navigation
+      if (Math.abs(dy) < 50) return
+      if (Math.abs(dx) * 2 > Math.abs(dy)) return   // not vertical enough — ignore
 
       const path = pathnameRef.current
 
