@@ -1,87 +1,101 @@
 import { useEffect, useRef } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 
-// Ordered list of routes — swipe navigates through these in sequence
 const ROUTES = ['/', '/about', '/events', '/gallery', '/team', '/register']
 
-const MIN_SWIPE_DISTANCE = 60   // px — minimum finger travel to count as a swipe
-const MAX_SWIPE_TIME     = 500  // ms — swipe must complete within this window
-const SCROLL_EDGE_BUFFER = 40   // px — how close to top/bottom to allow vertical swipe nav
-
 export function useSwipeNavigation() {
-  const navigate  = useNavigate()
-  const location  = useLocation()
-  const touchRef  = useRef(null)
+  const navigate     = useNavigate()
+  const location     = useLocation()
+
+  // Always-current refs — no stale closure issues
+  const pathnameRef  = useRef(location.pathname)
+  const cooldownRef  = useRef(false)
+  const touchRef     = useRef(null)
+  const firedRef     = useRef(false)
+
+  // Keep pathnameRef in sync on every render
+  pathnameRef.current = location.pathname
 
   useEffect(() => {
-    // ── Only activate on phone/tablet (≤ 768 px wide) ──────────────────────
-    const isMobile = () => window.innerWidth <= 768
+    const goTo = (direction) => {
+      if (cooldownRef.current || firedRef.current) return
+      const path = pathnameRef.current
+      const idx  = ROUTES.indexOf(path)
+      if (idx === -1) return
+      const next = direction === 'next' ? idx + 1 : idx - 1
+      if (next < 0 || next >= ROUTES.length) return
+      firedRef.current    = true
+      cooldownRef.current = true
+      navigate(ROUTES[next])
+      window.scrollTo({ top: 0, behavior: 'instant' })
+      setTimeout(() => { cooldownRef.current = false }, 800)  // short cooldown
+    }
 
-    const handleTouchStart = (e) => {
-      if (!isMobile()) return
-      const t = e.touches[0]
-      touchRef.current = {
-        startX:    t.clientX,
-        startY:    t.clientY,
-        startTime: Date.now(),
+    // ── SCROLL listener — works for all scrollable pages ─────────────────────
+    const onScroll = () => {
+      const path = pathnameRef.current
+      if (path === '/') return   // home page can't scroll, skip
+
+      const fromBottom =
+        document.documentElement.scrollHeight - window.scrollY - window.innerHeight
+
+      if (fromBottom <= 5)  goTo('next')
+      if (window.scrollY <= 0) {
+        // at very top — but don't go prev (let them read from top)
       }
     }
 
-    const handleTouchEnd = (e) => {
-      if (!isMobile() || !touchRef.current) return
+    // ── TOUCH listeners — catches home page (non-scrollable) ─────────────────
+    const onTouchStart = (e) => {
+      firedRef.current = false
+      const t = e.touches[0]
+      touchRef.current = { x: t.clientX, y: t.clientY }
+    }
 
-      const { startX, startY, startTime } = touchRef.current
+    const onTouchEnd = (e) => {
+      if (!touchRef.current) return
+      const { x: sx, y: sy } = touchRef.current
       touchRef.current = null
 
-      const t        = e.changedTouches[0]
-      const dx       = t.clientX - startX   // positive = swiped right
-      const dy       = t.clientY - startY   // positive = swiped down
-      const elapsed  = Date.now() - startTime
-      const absDx    = Math.abs(dx)
-      const absDy    = Math.abs(dy)
+      const t   = e.changedTouches[0]
+      const dx  = t.clientX - sx
+      const dy  = t.clientY - sy
 
-      if (elapsed > MAX_SWIPE_TIME) return   // too slow → ignore
+      // Must be clearly vertical and long enough
+      if (Math.abs(dy) < 40) return
+      if (Math.abs(dx) > Math.abs(dy)) return   // horizontal dominant — ignore
 
-      const currentIndex = ROUTES.indexOf(location.pathname)
-      if (currentIndex === -1) return
+      const path = pathnameRef.current
 
-      let direction = null   // 'next' | 'prev'
-
-      // ── Horizontal swipe (takes priority if dominant axis) ─────────────────
-      if (absDx > absDy && absDx >= MIN_SWIPE_DISTANCE) {
-        direction = dx < 0 ? 'next' : 'prev'   // left = next, right = prev
-      }
-
-      // ── Vertical swipe (only when at scroll edge) ──────────────────────────
-      if (absDy > absDx && absDy >= MIN_SWIPE_DISTANCE) {
-        const scrollTop    = window.scrollY || document.documentElement.scrollTop
-        const scrollBottom = document.documentElement.scrollHeight - window.innerHeight - scrollTop
-
-        if (dy < 0 && scrollTop <= SCROLL_EDGE_BUFFER) {
-          // Swiped UP (finger moved up) while at the top → go to previous page
-          direction = 'prev'
-        } else if (dy > 0 && scrollBottom <= SCROLL_EDGE_BUFFER) {
-          // Swiped DOWN (finger moved down) while at the bottom → go to next page
-          direction = 'next'
+      if (dy < 0) {
+        // Finger moved UP = scroll down = go to NEXT page
+        if (path === '/') {
+          // Home page — always trigger on upward swipe
+          goTo('next')
+        } else {
+          // Other pages — only if at the bottom
+          const fromBottom =
+            document.documentElement.scrollHeight - window.scrollY - window.innerHeight
+          if (fromBottom <= 30) goTo('next')
+        }
+      } else {
+        // Finger moved DOWN = scroll up = go to PREVIOUS page
+        if (path === '/') {
+          goTo('prev')
+        } else {
+          if (window.scrollY <= 30) goTo('prev')
         }
       }
-
-      if (!direction) return
-
-      const nextIndex = direction === 'next' ? currentIndex + 1 : currentIndex - 1
-      if (nextIndex >= 0 && nextIndex < ROUTES.length) {
-        navigate(ROUTES[nextIndex])
-        // Scroll new page to top immediately
-        window.scrollTo({ top: 0, behavior: 'instant' })
-      }
     }
 
-    document.addEventListener('touchstart', handleTouchStart, { passive: true })
-    document.addEventListener('touchend',   handleTouchEnd,   { passive: true })
+    window.addEventListener('scroll',      onScroll,     { passive: true })
+    document.addEventListener('touchstart', onTouchStart, { passive: true })
+    document.addEventListener('touchend',   onTouchEnd,   { passive: true })
 
     return () => {
-      document.removeEventListener('touchstart', handleTouchStart)
-      document.removeEventListener('touchend',   handleTouchEnd)
+      window.removeEventListener('scroll',      onScroll)
+      document.removeEventListener('touchstart', onTouchStart)
+      document.removeEventListener('touchend',   onTouchEnd)
     }
-  }, [navigate, location.pathname])
+  }, [navigate])   // ← only navigate in deps, pathname is read via ref
 }
