@@ -26,6 +26,13 @@ export function useSwipeNavigation() {
       if (next < 0 || next >= ROUTES.length) return
       firedRef.current    = true
       cooldownRef.current = true
+
+      // Tag <body> so CSS knows which direction the new page should enter from
+      // 'next'  → swipe UP   → new page slides IN from the bottom  ↑
+      // 'prev'  → swipe DOWN → new page slides IN from the top     ↓
+      document.body.dataset.navDir = direction
+      setTimeout(() => { delete document.body.dataset.navDir }, 700) // clear after animation
+
       navigate(ROUTES[next])
       window.scrollTo({ top: 0, behavior: 'instant' })
       setTimeout(() => { cooldownRef.current = false }, 800)  // short cooldown

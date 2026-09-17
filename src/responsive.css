@@ -271,6 +271,36 @@ html, body {
 }
 
 /* ======================================================
+   PAGE TRANSITION ANIMATIONS  (swipe direction aware)
+   ====================================================== */
+
+/* Swipe UP → go to next page → new page enters from BOTTOM (slides upward) */
+@keyframes slide-in-from-bottom {
+  from { transform: translateY(60px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* Swipe DOWN → go to prev page → new page enters from TOP (slides downward) */
+@keyframes slide-in-from-top {
+  from { transform: translateY(-60px); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  /* Apply to the top-level page wrapper when navigating forward */
+  body[data-nav-dir="next"] #root > .landing,
+  body[data-nav-dir="next"] #root > .site {
+    animation: slide-in-from-bottom 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* Apply to the top-level page wrapper when navigating backward */
+  body[data-nav-dir="prev"] #root > .landing,
+  body[data-nav-dir="prev"] #root > .site {
+    animation: slide-in-from-top 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+/* ======================================================
    SWIPE PAGE INDICATOR  (mobile only — hidden on desktop)
    ====================================================== */
 
