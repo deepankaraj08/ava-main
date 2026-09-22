@@ -43,6 +43,7 @@ function Events() {
 
                 <div className="event-card-media">
                   <img src={item.images[0]} alt={item.title} />
+                  {item.videoUrl && <span className="event-video-badge">▶ VIDEO TEASER</span>}
                   <span className="event-explore-badge">EXPLORE EVENT ↗</span>
                 </div>
 

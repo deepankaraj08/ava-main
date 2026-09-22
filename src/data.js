@@ -6,6 +6,12 @@ export const initiatives = [
     slug: "radiance",
     title: "RADIANCE",
     tag: "ART · CULTURE · CREATIVITY",
+    videoUrl: "https://drive.google.com/file/d/1CC6NR1H2n4vEmTJ9SRodTqVXE6bP3q46/preview",
+    videos: [
+      "https://drive.google.com/file/d/1CC6NR1H2n4vEmTJ9SRodTqVXE6bP3q46/preview",
+      "https://drive.google.com/file/d/1CA7ciwqFok0zG4CQCOlaloQ-Oqe1zv2j/preview",
+      "https://drive.google.com/file/d/1WTYhaJCs6tf11UmxxFmbglmDj7gBLvrX/preview"
+    ],
     images: [
       "/images-opt/radiance-1.webp",
       "/images-opt/radiance-2.webp",

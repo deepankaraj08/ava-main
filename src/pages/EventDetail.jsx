@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import Navbar from "../components/Navbar.jsx";
 import { initiatives } from "../data.js";
@@ -12,10 +12,35 @@ function EventDetail() {
   );
 
   const [activeImgIndex, setActiveImgIndex] = useState(0);
+  const [activeVideoIndex, setActiveVideoIndex] = useState(0);
+  const videoWrapperRef = useRef(null);
 
   if (!event) {
     return <Navigate to="/events" replace />;
   }
+
+  const videoList = event.videos || (event.videoUrl ? [event.videoUrl] : []);
+
+  const toggleFullscreen = () => {
+    if (!videoWrapperRef.current) return;
+    const elem = videoWrapperRef.current;
+
+    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    }
+  };
 
   return (
     <div className="site">
@@ -40,8 +65,69 @@ function EventDetail() {
           <div className="event-meta-bar">
             {event.date && <span className="event-meta-pill">📅 {event.date}</span>}
             {event.venue && <span className="event-meta-pill">📍 {event.venue}</span>}
+            {videoList.length > 0 && (
+              <span className="event-meta-pill video-meta-highlight">
+                ▶ {videoList.length} VIDEO TEASER{videoList.length > 1 ? "S" : ""} INCLUDED
+              </span>
+            )}
           </div>
         </section>
+
+        {/* VIDEO TEASER SECTION (IF AVAILABLE) */}
+        {videoList.length > 0 && (
+          <section className="event-video-section section">
+            <div className="event-video-box">
+              <div className="event-video-header">
+                <div className="event-video-header-top">
+                  <span className="video-pill-badge">
+                    ▶ OFFICIAL TEASER {videoList.length > 1 ? `(${activeVideoIndex + 1}/${videoList.length})` : ""}
+                  </span>
+
+                  <div className="video-header-controls">
+                    {videoList.length > 1 && (
+                      <div className="video-tabs">
+                        {videoList.map((_, idx) => (
+                          <button
+                            key={idx}
+                            type="button"
+                            className={`video-tab-btn ${idx === activeVideoIndex ? "active" : ""}`}
+                            onClick={() => setActiveVideoIndex(idx)}
+                          >
+                            ▶ VIDEO {idx + 1}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+
+                    <button
+                      type="button"
+                      className="fullscreen-toggle-btn"
+                      onClick={toggleFullscreen}
+                      title="Fullscreen"
+                      aria-label="Toggle Fullscreen"
+                    >
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M4 8V4h4M20 8V4h-4M4 16v4h4M20 16v4h-4" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <h2>WATCH {event.title} IN ACTION</h2>
+              </div>
+
+              <div className="event-video-wrapper" ref={videoWrapperRef}>
+                <iframe
+                  src={videoList[activeVideoIndex]}
+                  title={`${event.title} Video Teaser ${activeVideoIndex + 1}`}
+                  allow="autoplay; encrypted-media; fullscreen"
+                  allowFullScreen
+                  className="event-video-iframe"
+                ></iframe>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* GALLERY SLIDER & DETAILS SECTION */}
         <section className="event-detail-content section">
