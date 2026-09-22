@@ -8,18 +8,47 @@
   z-index: 30;
 
   width: min(620px, 88vw);
-  padding: clamp(16px, 3.2vw, 28px) clamp(14px, 3vw, 34px);
+  padding: clamp(18px, 3.2vw, 30px) clamp(16px, 3vw, 36px);
 
-  border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 24px;
+  border: 1px solid rgba(143, 201, 232, 0.28);
 
-  background: rgba(12, 22, 30, 0.55);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  backdrop-filter: blur(18px) saturate(140%);
-  box-shadow: 0 24px 60px rgba(6, 16, 24, 0.38);
+  background: rgba(10, 18, 26, 0.65);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  backdrop-filter: blur(20px) saturate(150%);
+  box-shadow: 0 24px 60px rgba(6, 16, 24, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 
   text-align: center;
   font-family: "Poppins", sans-serif;
+}
+
+.countdown-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 12px;
+  margin-bottom: 10px;
+  background: rgba(143, 201, 232, 0.15);
+  border: 1px solid rgba(143, 201, 232, 0.3);
+  border-radius: 50px;
+  font-size: clamp(8px, 1.4vw, 10px);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #8fc9e8;
+}
+
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #25D366;
+  box-shadow: 0 0 8px #25D366;
+  animation: livePulse 1.8s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 8px #25D366; }
+  50%       { transform: scale(1.4); opacity: 0.6; box-shadow: 0 0 14px #25D366; }
 }
 
 .countdown-kicker {
@@ -31,7 +60,7 @@
 }
 
 .countdown-title {
-  margin: 8px 0 clamp(12px, 2.2vw, 20px);
+  margin: 6px 0 clamp(12px, 2.2vw, 20px);
   font-size: clamp(11px, 2.2vw, 15px);
   font-weight: 700;
   letter-spacing: 0.3em;

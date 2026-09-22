@@ -39,6 +39,10 @@ const Countdown = () => {
 
   return (
     <div className="countdown">
+      <div className="countdown-live-badge">
+        <span className="pulse-dot"></span>
+        <span>ADVENTO 2026 • 30 SEP</span>
+      </div>
 
       <p className="countdown-kicker">FRESHER EVENT</p>
 
