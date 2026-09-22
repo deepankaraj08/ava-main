@@ -2,6 +2,8 @@
 
 export const initiatives = [
   {
+    id: "radiance",
+    slug: "radiance",
     title: "RADIANCE",
     tag: "ART · CULTURE · CREATIVITY",
     images: [
@@ -9,10 +11,24 @@ export const initiatives = [
       "/images-opt/radiance-2.webp",
       "/images-opt/radiance-3.webp"
     ],
-    text: "A celebration of expression, culture and the creative energy of our campus."
+    text: "A celebration of expression, culture and the creative energy of our campus.",
+    date: "Annual Cultural Fest",
+    venue: "Main Auditorium & Campus Grounds",
+    fullDescription: "RADIANCE is Avalanche's annual flagship cultural extravaganza celebrating artistic expression, music, dance, fashion, and creative performance. Bringing together talented campus artists, musicians, and performers, Radiance provides a grand stage for students to showcase their passion in front of vibrant crowds.",
+    highlights: [
+      "Live Music & Battle of the Bands",
+      "Choreography & Group Dance Showcase",
+      "Couture Fashion Show & Ramp Walk",
+      "Fine Arts, Graffiti & Photography Exhibition",
+      "Star Performance Night & DJ Sets"
+    ],
+    ctaText: "REGISTER NOW",
+    ctaLink: "/register"
   },
 
   {
+    id: "advento",
+    slug: "advento",
     title: "ADVENTO",
     tag: "ENERGY · PEOPLE · EXPERIENCE",
     images: [
@@ -20,10 +36,24 @@ export const initiatives = [
       "/images-opt/advento-2.webp",
       "/images-opt/advento-3.webp"
     ],
-    text: "A high-energy experience built around interaction, excitement and new beginnings."
+    text: "A high-energy experience built around interaction, excitement and new beginnings.",
+    date: "30 September 2026",
+    venue: "Campus Amphitheatre",
+    fullDescription: "ADVENTO is the ultimate freshers' welcome celebration designed to introduce incoming students to the heart and spirit of Avalanche. Packed with icebreaker games, live music jams, DJ nights, title hunts, and interactive student zones, Advento is where lifelong college friendships begin.",
+    highlights: [
+      "Official Freshers Title Hunt & Pageant",
+      "High-Energy Live DJ & Laser Light Show",
+      "Interactive Icebreakers & Team Games",
+      "Food Stalls & Custom Photo Booths",
+      "Special Performances by Avalanche Alumni"
+    ],
+    ctaText: "REGISTER FOR ADVENTO",
+    ctaLink: "/register"
   },
 
   {
+    id: "goonj",
+    slug: "goonj",
     title: "GOONJ",
     tag: "COMMUNITY · COMPASSION · IMPACT",
     images: [
@@ -31,7 +61,19 @@ export const initiatives = [
       "/images-opt/goonj-2.webp",
       "/images-opt/goonj-3.webp"
     ],
-    text: "An initiative where students come together to create a positive impact beyond campus."
+    text: "An initiative where students come together to create a positive impact beyond campus.",
+    date: "Community Outreach Initiative",
+    venue: "Campus & Local Community Centers",
+    fullDescription: "GOONJ is Avalanche's dedicated social impact and community outreach program. Grounded in empathy and action, Goonj mobilizes student volunteers to organize donation drives, environmental campaigns, educational workshops for underprivileged youth, and awareness rallies that create a meaningful difference.",
+    highlights: [
+      "Clothing, Book & Essential Donation Drives",
+      "Youth Education & Skill Workshops",
+      "Tree Plantation & Eco-Sustainability Rallies",
+      "Blood Donation & Health Checkup Camps",
+      "Interactive Street Plays (Nukkad Natak)"
+    ],
+    ctaText: "JOIN GOONJ INITIATIVE",
+    ctaLink: "/register"
   }
 ];
 

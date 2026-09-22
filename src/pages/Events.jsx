@@ -34,19 +34,27 @@ function Events() {
 
         <section className="card-grid section">
           {initiatives.map((item) => (
-            <article className="event-card" key={item.title} data-reveal>
+            <Link
+              to={`/events/${item.slug}`}
+              className="event-card-link"
+              key={item.title}
+            >
+              <article className="event-card" data-reveal>
 
-              <div className="event-card-media">
-                <img src={item.images[0]} alt={item.title} />
-              </div>
+                <div className="event-card-media">
+                  <img src={item.images[0]} alt={item.title} />
+                  <span className="event-explore-badge">EXPLORE EVENT ↗</span>
+                </div>
 
-              <div className="event-card-body">
-                <span>{item.tag}</span>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </div>
+                <div className="event-card-body">
+                  <span>{item.tag}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                  <span className="event-action-text">EXPLORE DETAILS ↗</span>
+                </div>
 
-            </article>
+              </article>
+            </Link>
           ))}
         </section>
 
