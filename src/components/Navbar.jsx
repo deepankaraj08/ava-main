@@ -4,10 +4,11 @@ import Avalogo from '../../assets-source/gallery/Avalanche Logo copy.png'
 import '../navbar.css'
 
 const LINKS = [
-  { to: '/about', label: 'About' },
-  { to: '/events', label: 'Events' },
-  { to: '/gallery', label: 'Gallery' },
-  { to: '/team', label: 'Team' }
+  { to: '/about',        label: 'About' },
+  { to: '/events',       label: 'Events' },
+  { to: '/gallery',      label: 'Gallery' },
+  { to: '/team',         label: 'Team' },
+  { to: '/recruitments', label: 'Recruitments' }
 ]
 
 // <header>, not <div>: the old structural rules in index.css/responsive.css

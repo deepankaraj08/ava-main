@@ -6,7 +6,8 @@ import Events      from './pages/Events.jsx'
 import Gallery     from './pages/Gallery.jsx'
 import TeamPage    from './pages/TeamPage.jsx'
 import Register    from './pages/Register.jsx'
-import EventDetail from './pages/EventDetail.jsx'
+import EventDetail    from './pages/EventDetail.jsx'
+import Recruitments  from './pages/Recruitments.jsx'
 
 // Inner component so it can use hooks that need Router context
 function AppInner() {
@@ -25,7 +26,8 @@ function AppInner() {
       <Route path='/events/:slug' element={<EventDetail />} />
       <Route path='/gallery'      element={<Gallery />} />
       <Route path='/team'         element={<TeamPage />} />
-      <Route path='/register'     element={<Register />} />
+      <Route path='/register'      element={<Register />} />
+      <Route path='/recruitments' element={<Recruitments />} />
 
       {/* anything else falls back home instead of a blank screen */}
       <Route path='*' element={<Navigate to='/' replace />} />

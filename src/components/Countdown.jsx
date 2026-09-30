@@ -1,42 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../countdown.css";
 
-// 30 / 09 / 2026, local midnight
-const TARGET = new Date(2026, 8, 30, 0, 0, 0);
-
-
-const pad = (n) => String(n).padStart(2, "0");
-
-function remaining() {
-  const ms = TARGET - Date.now();
-  if (ms <= 0) return null;
-  const s = Math.floor(ms / 1000);
-  return {
-    days: Math.floor(s / 86400),
-    hrs: Math.floor((s % 86400) / 3600),
-    min: Math.floor((s % 3600) / 60),
-    sec: s % 60
-  };
-}
 
 const Countdown = () => {
-  const [left, setLeft] = useState(remaining);
-
-  useEffect(() => {
-    const id = setInterval(() => setLeft(remaining()), 1000);
-    return () => clearInterval(id);
-  }, []);
-
-  const live = left ?? { days: 0, hrs: 0, min: 0, sec: 0 };
-
-  const cells = [
-    [String(live.days), "DAYS"],
-    [pad(live.hrs), "HRS"],
-    [pad(live.min), "MIN"],
-    [pad(live.sec), "SEC"]
-  ];
-
   return (
     <div className="countdown">
       <div className="countdown-live-badge">
@@ -46,26 +13,24 @@ const Countdown = () => {
 
       <p className="countdown-kicker">FRESHER EVENT</p>
 
-      <p className="countdown-title">
-        {left ? "ADVENTO COMING SOON" : "ADVENTO IS LIVE"}
-      </p>
-
-      <div className="countdown-grid">
-        {cells.map(([value, label], i) => (
-          <React.Fragment key={label}>
-            {i > 0 && <span className="countdown-sep">:</span>}
-            <div className="countdown-cell">
-              <strong>{value}</strong>
-              <span>{label}</span>
-            </div>
-          </React.Fragment>
-        ))}
-      </div>
+      <p className="countdown-title">ADVENTO IS LIVE</p>
 
       <div className="countdown-actions">
         <Link className="countdown-cta" to="/register">
           REGISTER NOW
         </Link>
+
+        <Link
+          to="/recruitments"
+          className="countdown-cta countdown-recruiter"
+        >
+          {/* Clipboard / form icon */}
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true">
+            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+          </svg>
+          <span>GET RECRUITER</span>
+        </Link>
+
         <a
           href="https://chat.whatsapp.com/JZHaa8RgKSv8zYf6nqhQUL"
           target="_blank"

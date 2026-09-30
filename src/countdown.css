@@ -169,6 +169,19 @@
   box-shadow: 0 14px 30px rgba(37, 211, 102, 0.4);
 }
 
+/* GET RECRUITER button — accent purple/indigo */
+.countdown-recruiter {
+  background: #6366f1;
+  border-color: rgba(99, 102, 241, 0.6);
+  color: #ffffff;
+}
+
+.countdown-recruiter:hover {
+  background: #4f46e5;
+  color: #ffffff;
+  box-shadow: 0 14px 30px rgba(99, 102, 241, 0.45);
+}
+
 /* short screens: keep it clear of the footer strip */
 @media (max-height: 700px) {
   .countdown { bottom: 58px; }
