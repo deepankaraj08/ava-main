@@ -17,8 +17,8 @@ function Recruitments() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    // Target exact time: September 30, 2026 at 9:00 PM IST
-    const target = new Date("2026-09-30T21:00:00+05:30");
+    // Target exact time: September 30, 2026 at 8:55 PM IST
+    const target = new Date("2026-09-30T20:55:00+05:30");
 
     const updateTimer = () => {
       const now = new Date();
@@ -74,7 +74,7 @@ function Recruitments() {
                   </a>
                 ) : (
                   <div className="req-btn-primary" style={{ cursor: "not-allowed", opacity: 0.9, textAlign: "center" }}>
-                    Opens at 9 PM
+                    Opens at 8:55 PM
                     <span style={{
                       backgroundColor: "#FFE344",
                       color: "#000",
@@ -127,9 +127,9 @@ function Recruitments() {
           <div className="req-banner" data-reveal>
             <div className="req-banner-text">
               <p className="req-banner-kicker">READY TO JOIN?</p>
-              <h2 className="req-banner-title">Register for ADVENTO 2026</h2>
+              <h2 className="req-banner-title">RECRUITMENT</h2>
               <p className="req-banner-sub">
-                Fill in the form and secure your spot at the biggest fresher event of the year.
+                Fill in the form and secure your spot
               </p>
             </div>
             <div className="req-banner-actions">
